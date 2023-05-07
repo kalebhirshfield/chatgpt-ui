@@ -68,7 +68,7 @@ def main(page: ft.Page):
         leading=ft.Icon(ft.icons.WARNING_AMBER_ROUNDED, color=ft.colors.BLACK, size=40),
         content=ft.Text(
             color=ft.colors.BLACK,
-            value="Oops, I was unable to respond to that message. Please try again.",
+            value="ChatGPT was unable to respond to that message. Please try again.",
         ),
         actions=[
             ft.TextButton(
