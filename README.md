@@ -2,4 +2,4 @@
 
 ## Package
 
-flet pack main.py --icon assets\icon.png --name ChatGPT
+    flet pack main.py --icon assets\icon.png --name ChatGPT
