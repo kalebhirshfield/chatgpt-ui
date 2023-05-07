@@ -21,7 +21,10 @@ def main(page: ft.Page):
             )
             lvAnswer.controls.append(ft.Text(f"You: {tbQuestion.value}"))
             lvAnswer.controls.append(
-                ft.Text(f"ChatGPT: {completion.choices[0].message.content}")
+                ft.Text(
+                    f"ChatGPT: {completion.choices[0].message.content}",
+                    color=ft.colors.BLUE_ACCENT,
+                )
             )
             tbQuestion.value = ""
             page.update()
