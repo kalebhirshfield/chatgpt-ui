@@ -123,6 +123,7 @@ def main(page: ft.Page):
         on_submit=btnClick,
         autofocus=True,
         focused_border_color=ft.colors.BLUE_ACCENT,
+        capitalization=ft.TextCapitalization.SENTENCES,
     )
 
     page.add(
