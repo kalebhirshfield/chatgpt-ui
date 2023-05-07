@@ -1,11 +1,11 @@
 import flet as ft
 from flet import RoundedRectangleBorder
-import openai
-import os
+import openai as ai
+from os import getenv
 from dotenv import load_dotenv
 
 load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+ai.api_key = getenv("OPENAI_API_KEY")
 
 
 def main(page: ft.Page):
@@ -15,7 +15,7 @@ def main(page: ft.Page):
 
     def btnClick(e):
         try:
-            completion = openai.ChatCompletion.create(
+            completion = ai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=[{"role": "user", "content": tbQuestion.value}],
             )
