@@ -9,11 +9,11 @@ ai.api_key = getenv("OPENAI_API_KEY")
 
 
 def main(page: ft.Page):
-    def closeBanner(e):
+    def closeBanner(_):
         page.banner.open = False
         page.update()
 
-    def btnClick(e):
+    def btnClick(_):
         try:
             completion = ai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
@@ -136,3 +136,7 @@ def main(page: ft.Page):
 
 
 ft.app(target=main)
+
+
+if __name__ == "__main__":
+    ft.app(target=main)
