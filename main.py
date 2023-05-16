@@ -15,18 +15,19 @@ def main(page: ft.Page):
 
     def btnClick(_):
         try:
+            lvAnswer.controls.append(ft.Text(f"You: {tbQuestion.value}"))
+            tbQuestion.value = ""
+            page.update()
             completion = ai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=[{"role": "user", "content": tbQuestion.value}],
             )
-            lvAnswer.controls.append(ft.Text(f"You: {tbQuestion.value}"))
             lvAnswer.controls.append(
                 ft.Text(
                     f"ChatGPT: {completion.choices[0].message.content}",
                     color=ft.colors.BLUE_ACCENT,
                 )
             )
-            tbQuestion.value = ""
             page.update()
         except:
             page.banner.open = True
@@ -114,7 +115,7 @@ def main(page: ft.Page):
         multiline=True,
         shift_enter=True,
         border_radius=10,
-        border_color=ft.colors.WHITE70,
+        border_color=ft.colors.BACKGROUND,
         text_style=ft.TextStyle(color=ft.colors.WHITE70),
         label_style=ft.TextStyle(color=ft.colors.WHITE70),
         border_width=2,
@@ -124,6 +125,8 @@ def main(page: ft.Page):
         autofocus=True,
         focused_border_color=ft.colors.BLUE_ACCENT,
         capitalization=ft.TextCapitalization.SENTENCES,
+        focused_bgcolor=ft.colors.BACKGROUND,
+        bgcolor=ft.colors.BLACK26,
     )
 
     page.add(
