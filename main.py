@@ -15,12 +15,13 @@ def main(page: ft.Page):
 
     def btnClick(_):
         try:
-            lvAnswer.controls.append(ft.Text(f"You: {tbQuestion.value}"))
+            question = tbQuestion.value
             tbQuestion.value = ""
+            lvAnswer.controls.append(ft.Text(f"You: {question}"))
             page.update()
             completion = ai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
-                messages=[{"role": "user", "content": tbQuestion.value}],
+                messages=[{"role": "assistant", "content": question}],
             )
             lvAnswer.controls.append(
                 ft.Text(
@@ -28,6 +29,7 @@ def main(page: ft.Page):
                     color=ft.colors.BLUE_ACCENT,
                 )
             )
+
             page.update()
         except:
             page.banner.open = True
