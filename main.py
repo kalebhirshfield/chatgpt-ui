@@ -21,7 +21,7 @@ def main(page: ft.Page):
             page.update()
             completion = ai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
-                messages=[{"role": "assistant", "content": question}],
+                messages=[{"role": "user", "content": question}],
             )
             lvAnswer.controls.append(
                 ft.Text(
