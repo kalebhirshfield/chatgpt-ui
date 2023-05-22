@@ -129,6 +129,8 @@ def main(page: ft.Page):
         capitalization=ft.TextCapitalization.SENTENCES,
         focused_bgcolor=ft.colors.BACKGROUND,
         bgcolor=ft.colors.BLACK26,
+        cursor_color=ft.colors.BLUE_ACCENT,
+        cursor_width=3,
     )
 
     page.add(
