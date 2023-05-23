@@ -63,7 +63,7 @@ def main(page: ft.Page):
             },
             shape={ft.MaterialState.DEFAULT: RoundedRectangleBorder(radius=10)},
         ),
-        on_click=lambda e: page.window_close(),
+        on_click=lambda _: page.window_close(),
     )
 
     page.banner = ft.Banner(
