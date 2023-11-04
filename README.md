@@ -1,4 +1,4 @@
-# ChatGPT-UI
+# ChatGPT UI
 
 ## Package
 
