@@ -9,21 +9,21 @@ client = OpenAI(api_key=getenv("OPENAI_API_KEY"))
 
 
 def main(page: ft.Page):
-    def closeBanner(_):
+    def close_banner(_):
         page.banner.open = False
         page.update()
 
-    def btnClick(_):
+    def btn_click(_):
         try:
-            question = tbQuestion.value
-            tbQuestion.value = ""
-            lvAnswer.controls.append(ft.Text(f"You: {question}"))
+            question = str(tb_question.value)
+            tb_question.value = ""
+            lv_answer.controls.append(ft.Text(f"You: {question}"))
             page.update()
             completion = client.chat.completions.create(
                 messages=[{"role": "user", "content": question}],
                 model="gpt-3.5-turbo",
             )
-            lvAnswer.controls.append(
+            lv_answer.controls.append(
                 ft.Text(
                     f"ChatGPT: {completion.choices[0].message.content}",
                     color=ft.colors.TERTIARY,
@@ -55,7 +55,7 @@ def main(page: ft.Page):
         actions=[
             ft.TextButton(
                 "Retry",
-                on_click=btnClick,
+                on_click=btn_click,
                 style=ft.ButtonStyle(
                     color={
                         ft.MaterialState.DEFAULT: ft.colors.ON_ERROR_CONTAINER,
@@ -65,7 +65,7 @@ def main(page: ft.Page):
             ),
             ft.TextButton(
                 "Cancel",
-                on_click=closeBanner,
+                on_click=close_banner,
                 style=ft.ButtonStyle(
                     color={
                         ft.MaterialState.DEFAULT: ft.colors.ON_ERROR_CONTAINER,
@@ -79,7 +79,7 @@ def main(page: ft.Page):
         ],
     )
 
-    lvAnswer = ft.ListView(
+    lv_answer = ft.ListView(
         expand=True,
         spacing=10,
         padding=20,
@@ -87,7 +87,7 @@ def main(page: ft.Page):
         height=page.window_height - 150,
     )
 
-    tbQuestion = ft.TextField(
+    tb_question = ft.TextField(
         label="Talk to ChatGPT",
         suffix_icon="send",
         multiline=True,
@@ -99,7 +99,7 @@ def main(page: ft.Page):
         border_width=2,
         focused_border_width=4,
         expand=True,
-        on_submit=btnClick,
+        on_submit=btn_click,
         autofocus=True,
         focused_border_color=ft.colors.ON_SURFACE_VARIANT,
         capitalization=ft.TextCapitalization.SENTENCES,
@@ -110,8 +110,8 @@ def main(page: ft.Page):
     )
 
     page.add(
-        ft.Row(controls=[lvAnswer]),
-        ft.Row(controls=[tbQuestion], alignment="bottom"),
+        ft.Row(controls=[lv_answer]),
+        ft.Row(controls=[tb_question], alignment="bottom"),
     )
 
 
